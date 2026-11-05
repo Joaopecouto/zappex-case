@@ -3,11 +3,11 @@
 <p align="center">CRM Kanban dentro do WhatsApp Web<br><sub><i>Kanban CRM inside WhatsApp Web</i></sub></p>
 
 <p align="center">
-  <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/react.svg" height="15" alt=""> React</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/typescript.svg" height="15" alt=""> TypeScript</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/nestjs.svg" height="15" alt=""> NestJS</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/stripe.svg" height="15" alt=""> Stripe</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/googlechrome.svg" height="15" alt=""> Chrome extension</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/sentry.svg" height="15" alt=""> Sentry</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/vitest.svg" height="15" alt=""> Vitest</kbd>
+  <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/react.svg" height="18" alt=""> React</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/typescript.svg" height="18" alt=""> TypeScript</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/nestjs.svg" height="18" alt=""> NestJS</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/stripe.svg" height="18" alt=""> Stripe</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/chrome-extension.svg" height="18" alt=""> Chrome extension</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/sentry.svg" height="18" alt=""> Sentry</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/vitest.svg" height="18" alt=""> Vitest</kbd>
 </p>
 
-> **PT** Case study. O código é privado; este repositório documenta o que foi construído.
-> **EN** Case study. The source code is private; this repository documents what was built.
+> **PT** O código é privado; este repositório documenta o que foi construído.
+> **EN** The source code is private; this repository documents what was built.
 
 ## Português
 
