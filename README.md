@@ -62,6 +62,8 @@ Colunas e cards sobre a conversa, com arrasto, filtros, densidade ajustável, ar
 - Mudanças chegam por push (evento de funil no stream do executor), com o polling como rede de segurança. Durante um arrasto o refetch fica congelado para não sobrescrever o gesto.
 - Cada coluna nova nasce numa lista fixa de colunas padrão; uma delas é a de entrada, onde cai o card de contato novo.
 
+<p align="center"><img src="./assets/screens/01-board-kanban.png" alt="Quadro Kanban com colunas e cards de contato, etiquetas coloridas, selo de automações por coluna e filtros na barra superior." width="92%"><br><sub>Quadro Kanban com colunas e cards de contato, etiquetas coloridas, selo de automações por coluna e filtros na barra superior.</sub></p>
+
 #### Contatos, cards e etiquetas
 
 Cada card é um contato. Nome, empresa e telefone moram num campo cifrado no navegador.
@@ -70,11 +72,17 @@ Cada card é um contato. Nome, empresa e telefone moram num campo cifrado no nav
 - Etiquetas coloridas, aplicadas por card, com gerenciador próprio.
 - Um sinal de anúncio (clique no botão de WhatsApp do site do usuário) pode ser casado com o contato que escreve em seguida, por proximidade de horário.
 
+<p align="center"><img src="./assets/screens/03-etiquetas.png" alt="Gerenciador de etiquetas coloridas, com criação, renomeação e paleta de cores." width="92%"><br><sub>Gerenciador de etiquetas coloridas, com criação, renomeação e paleta de cores.</sub></p>
+
+<p align="center"><img src="./assets/screens/02-contato-card-etiquetas.png" alt="Gaveta do contato aberta sobre o quadro: nome, empresa, origem, anotação, datas e etiquetas aplicadas ao card." width="92%"><br><sub>Gaveta do contato aberta sobre o quadro: nome, empresa, origem, anotação, datas e etiquetas aplicadas ao card.</sub></p>
+
 #### Listas de contatos
 
 Listas importadas de planilha ou montadas dos contatos do WhatsApp, usadas como fonte da fila.
 - A importação lê o arquivo no navegador, normaliza telefones e mescla duplicados.
 - O servidor guarda a lista pelos mesmos pseudônimos.
+
+<p align="center"><img src="./assets/screens/04-listas.png" alt="Tela de listas de contatos: listas na lateral, contatos em cards com a lista de origem e filtros por fonte." width="92%"><br><sub>Tela de listas de contatos: listas na lateral, contatos em cards com a lista de origem e filtros por fonte.</sub></p>
 
 #### Fila de disparo e agendamento
 
@@ -84,6 +92,10 @@ A fila automática é uma por workspace, com as listas como fontes ligáveis e o
 - O servidor entrega uma ordem por vez ao executor e respeita uma pausa por número, com piso travado no servidor.
 - A mensagem agendada avulsa sai na hora marcada; fila e automação ficam presas à janela de horário.
 
+<p align="center"><img src="./assets/screens/06-mensagens-agendadas.png" alt="Hub de mensagens programadas, avulsas por contato, com data, hora e cancelamento." width="92%"><br><sub>Hub de mensagens programadas, avulsas por contato, com data, hora e cancelamento.</sub></p>
+
+<p align="center"><img src="./assets/screens/05-fila-de-disparo.png" alt="Fila automática: status, janela de horário, listas ligáveis e ordenáveis como fontes e o próximo contato a receber." width="92%"><br><sub>Fila automática: status, janela de horário, listas ligáveis e ordenáveis como fontes e o próximo contato a receber.</sub></p>
+
 #### Automações e respostas automáticas
 
 Gatilho, atraso e ação. Gatilhos: entrou na coluna, parado há N minutos, sem resposta há N, respondeu, palavra-chave. Ações: mandar, mover, mandar e mover.
@@ -92,6 +104,10 @@ Gatilho, atraso e ação. Gatilhos: entrou na coluna, parado há N minutos, sem 
 - Mover card funciona com a aba fechada; enviar exige executor online.
 - Respostas automáticas têm janela e intervalo mínimo por contato.
 
+<p align="center"><img src="./assets/screens/07b-automacao-editor.png" alt="Editor de regra: nome, coluna de origem, gatilho, atraso e ação, com demonstração ao vivo ao lado." width="92%"><br><sub>Editor de regra: nome, coluna de origem, gatilho, atraso e ação, com demonstração ao vivo ao lado.</sub></p>
+
+<p align="center"><img src="./assets/screens/07-automacoes.png" alt="Lista de regras de automação com gatilho, atraso e ação, contagem de disparos e botão de nova regra." width="92%"><br><sub>Lista de regras de automação com gatilho, atraso e ação, contagem de disparos e botão de nova regra.</sub></p>
+
 #### Áudio
 
 Mensagem de voz gravada na hora ou enviada de arquivo, na fila e nas automações.
@@ -99,9 +115,13 @@ Mensagem de voz gravada na hora ou enviada de arquivo, na fila e nas automaçõe
 - Sai como mensagem de voz, sem legenda.
 - O arquivo é mídia de configuração do usuário e fica numa tabela própria, com tipo validado por lista fechada.
 
+<p align="center"><img src="./assets/screens/08-audio-gravando.png" alt="Gravador de mensagem de voz dentro do editor de automação, gravando com cronômetro e botão de parar." width="92%"><br><sub>Gravador de mensagem de voz dentro do editor de automação, gravando com cronômetro e botão de parar.</sub></p>
+
 #### Respostas rápidas
 
 Atalhos de texto para uso manual, gratuitos nos dois planos.
+
+<p align="center"><img src="./assets/screens/09-respostas-rapidas.png" alt="Atalhos de texto com tokens como @primeiro_nome, formulário de criação e prévia da mensagem." width="92%"><br><sub>Atalhos de texto com tokens como @primeiro_nome, formulário de criação e prévia da mensagem.</sub></p>
 
 #### Planos e cobrança
 
@@ -111,6 +131,8 @@ Plano gratuito e Pro. O grátis tem três colunas e automações que só movem c
 - O preço mora em tabela e muda sem deploy.
 - O webhook é assinado, idempotente por `event.id` e serializado por conta com lock consultivo.
 - A trava de plano mora no servidor; o cadeado na tela só informa. Queda de plano não apaga nada.
+
+<p align="center"><img src="./assets/screens/10-planos-e-cobranca.png" alt="Plano atual, escolha entre cartão e Pix, mensal ou anual com a economia do anual, e histórico de pagamentos." width="92%"><br><sub>Plano atual, escolha entre cartão e Pix, mensal ou anual com a economia do anual, e histórico de pagamentos.</sub></p>
 
 ### Arquitetura
 
@@ -226,6 +248,8 @@ Columns and cards over the conversation, with drag and drop, filters, adjustable
 - Changes arrive by push (a pipeline event on the executor stream), with polling as a safety net. During a drag the refetch is frozen so it cannot overwrite the gesture.
 - New accounts get a set of default columns; one is the entry column where cards for new contacts land.
 
+<p align="center"><img src="./assets/screens/01-board-kanban.png" alt="Kanban board with columns and contact cards, colored labels, a per-column automation badge and filters in the top bar." width="92%"><br><sub>Kanban board with columns and contact cards, colored labels, a per-column automation badge and filters in the top bar.</sub></p>
+
 #### Contacts, cards and labels
 
 Each card is a contact. Name, company and phone live in a field encrypted in the browser.
@@ -234,11 +258,17 @@ Each card is a contact. Name, company and phone live in a field encrypted in the
 - Colored labels, applied per card, with their own manager.
 - An ad click (on the WhatsApp button of the user's own site) can be matched to the contact who writes right after, by time proximity.
 
+<p align="center"><img src="./assets/screens/03-etiquetas.png" alt="Colored label manager with create, rename and a color palette." width="92%"><br><sub>Colored label manager with create, rename and a color palette.</sub></p>
+
+<p align="center"><img src="./assets/screens/02-contato-card-etiquetas.png" alt="Contact drawer open over the board: name, company, source, note, dates and the labels applied to the card." width="92%"><br><sub>Contact drawer open over the board: name, company, source, note, dates and the labels applied to the card.</sub></p>
+
 #### Contact lists
 
 Lists imported from a spreadsheet or built from WhatsApp contacts, used as sources for the queue.
 - Import reads the file in the browser, normalizes phones and merges duplicates.
 - The server stores the list under the same pseudonyms.
+
+<p align="center"><img src="./assets/screens/04-listas.png" alt="Contact lists screen: lists on the side, contacts as cards with their list and filters by source." width="92%"><br><sub>Contact lists screen: lists on the side, contacts as cards with their list and filters by source.</sub></p>
 
 #### Send queue and scheduling
 
@@ -248,6 +278,10 @@ The automatic queue is one per workspace, with lists as switchable, orderable so
 - The server hands one order at a time to the executor and enforces a per-number pause whose floor is locked server side.
 - A one-off scheduled message goes out at the chosen time; queue and automations stay inside the time window.
 
+<p align="center"><img src="./assets/screens/06-mensagens-agendadas.png" alt="Hub of one-off scheduled messages per contact, with date, time and cancel." width="92%"><br><sub>Hub of one-off scheduled messages per contact, with date, time and cancel.</sub></p>
+
+<p align="center"><img src="./assets/screens/05-fila-de-disparo.png" alt="Automatic queue: status, time window, switchable and sortable lists as sources, and the next contact in line." width="92%"><br><sub>Automatic queue: status, time window, switchable and sortable lists as sources, and the next contact in line.</sub></p>
+
 #### Automations and auto-replies
 
 Trigger, delay, action. Triggers: entered column, stalled for N minutes, no reply for N, replied, keyword. Actions: send, move, send and move.
@@ -256,6 +290,10 @@ Trigger, delay, action. Triggers: entered column, stalled for N minutes, no repl
 - Moving a card works with the tab closed; sending needs an online executor.
 - Auto-replies have a time window and a minimum interval per contact.
 
+<p align="center"><img src="./assets/screens/07b-automacao-editor.png" alt="Rule editor: name, source column, trigger, delay and action, with a live preview beside it." width="92%"><br><sub>Rule editor: name, source column, trigger, delay and action, with a live preview beside it.</sub></p>
+
+<p align="center"><img src="./assets/screens/07-automacoes.png" alt="List of automation rules with trigger, delay and action, fire counts and a new-rule button." width="92%"><br><sub>List of automation rules with trigger, delay and action, fire counts and a new-rule button.</sub></p>
+
 #### Audio
 
 Voice messages recorded on the spot or uploaded from a file, in the queue and in automations.
@@ -263,9 +301,13 @@ Voice messages recorded on the spot or uploaded from a file, in the queue and in
 - It goes out as a voice message, without a caption.
 - The file is user-supplied configuration media, stored in its own table with the type checked against a closed list.
 
+<p align="center"><img src="./assets/screens/08-audio-gravando.png" alt="Voice message recorder inside the automation editor, recording with a timer and a stop button." width="92%"><br><sub>Voice message recorder inside the automation editor, recording with a timer and a stop button.</sub></p>
+
 #### Quick replies
 
 Text shortcuts for manual use, free on both plans.
+
+<p align="center"><img src="./assets/screens/09-respostas-rapidas.png" alt="Text shortcuts with tokens such as @primeiro_nome, a creation form and a message preview." width="92%"><br><sub>Text shortcuts with tokens such as @primeiro_nome, a creation form and a message preview.</sub></p>
 
 #### Plans and billing
 
@@ -275,6 +317,8 @@ Free and Pro plans. Free has three columns and automations that only move cards.
 - Prices live in a table and change without a deploy.
 - The webhook is signed, idempotent by `event.id` and serialized per account with an advisory lock.
 - Plan gating lives on the server; the padlock in the UI only informs. Losing a plan deletes nothing.
+
+<p align="center"><img src="./assets/screens/10-planos-e-cobranca.png" alt="Current plan, card or Pix choice, monthly or yearly with the yearly savings, and payment history." width="92%"><br><sub>Current plan, card or Pix choice, monthly or yearly with the yearly savings, and payment history.</sub></p>
 
 ### Architecture
 
