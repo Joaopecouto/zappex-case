@@ -1,9 +1,9 @@
 <h1 align="center">zappex</h1>
 
-<p align="center">CRM Kanban dentro do WhatsApp Web · <i>Kanban CRM inside WhatsApp Web</i></p>
+<p align="center">CRM Kanban dentro do WhatsApp Web<br><sub><i>Kanban CRM inside WhatsApp Web</i></sub></p>
 
 <p align="center">
-  <img src="./assets/chips/react.png" alt="React" height="30"> <img src="./assets/chips/typescript.png" alt="TypeScript" height="30"> <img src="./assets/chips/nestjs.png" alt="NestJS" height="30"> <img src="./assets/chips/stripe.png" alt="Stripe" height="30"> <img src="./assets/chips/chrome-extension.png" alt="Chrome extension" height="30"> <img src="./assets/chips/sentry.png" alt="Sentry" height="30"> <img src="./assets/chips/vitest.png" alt="Vitest" height="30">
+  <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/react.svg" height="15" alt=""> React</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/typescript.svg" height="15" alt=""> TypeScript</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/nestjs.svg" height="15" alt=""> NestJS</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/stripe.svg" height="15" alt=""> Stripe</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/googlechrome.svg" height="15" alt=""> Chrome extension</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/sentry.svg" height="15" alt=""> Sentry</kbd> <kbd><img src="https://raw.githubusercontent.com/Joaopecouto/Joaopecouto/main/assets/icons/vitest.svg" height="15" alt=""> Vitest</kbd>
 </p>
 
 > **PT** Case study. O código é privado; este repositório documenta o que foi construído.
@@ -55,4 +55,5 @@
 | Lint | strict TypeScript rules enabled and at zero in both packages |
 | Audits | QA and security rounds covering sending and billing |
 
-<sub>[joaocouto.alcetus.com](https://joaocouto.alcetus.com) · [joaopecouto77@gmail.com](mailto:joaopecouto77@gmail.com)</sub>
+
+<sub>Contato · Contact: <a href="https://joaocouto.alcetus.com">joaocouto.alcetus.com</a> · <a href="mailto:joaopecouto77@gmail.com">joaopecouto77@gmail.com</a></sub>
