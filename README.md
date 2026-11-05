@@ -1,5 +1,9 @@
+<h1 align="center">zappex</h1>
+
+<p align="center">CRM Kanban dentro do WhatsApp Web · <i>Kanban CRM inside WhatsApp Web</i></p>
+
 <p align="center">
-  <img src="./assets/card-zappex.png" alt="zappex: CRM Kanban dentro do WhatsApp Web" width="640">
+  <img src="./assets/chips/react.png" alt="React" height="30"> <img src="./assets/chips/typescript.png" alt="TypeScript" height="30"> <img src="./assets/chips/nestjs.png" alt="NestJS" height="30"> <img src="./assets/chips/stripe.png" alt="Stripe" height="30"> <img src="./assets/chips/chrome-extension.png" alt="Chrome extension" height="30"> <img src="./assets/chips/sentry.png" alt="Sentry" height="30"> <img src="./assets/chips/vitest.png" alt="Vitest" height="30">
 </p>
 
 > **PT** Case study. O código é privado; este repositório documenta o que foi construído.
