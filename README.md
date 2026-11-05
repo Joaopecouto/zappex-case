@@ -54,10 +54,10 @@ flowchart LR
 
 #### Board (Kanban)
 
-Colunas e cards sobre a conversa, com arrasto, filtros, densidade ajustável, arquivamento com desfazer e remoção do funil.
+O board mostra colunas e cards sobre a conversa, com arrasto, filtros, densidade ajustável, arquivamento com desfazer e remoção do funil.
 - A tela usa dnd-kit; o drop persiste na hora e o servidor devolve o estado.
 - Mudanças chegam por push (evento de funil no stream do executor), com o polling como rede de segurança. Durante um arrasto o refetch fica congelado para não sobrescrever o gesto.
-- Cada coluna nova nasce numa lista fixa de colunas padrão; uma delas é a de entrada, onde cai o card de contato novo.
+- As contas novas ganham um conjunto de colunas padrão; uma delas é a de entrada, onde cai o card de contato novo.
 
 <p align="center"><img src="./assets/screens/01-board-kanban.png" alt="Quadro Kanban com colunas e cards de contato, etiquetas coloridas, selo de automações por coluna e filtros na barra superior." width="92%"><br><sub>Quadro Kanban com colunas e cards de contato, etiquetas coloridas, selo de automações por coluna e filtros na barra superior.</sub></p>
 
@@ -65,8 +65,8 @@ Colunas e cards sobre a conversa, com arrasto, filtros, densidade ajustável, ar
 
 Cada card é um contato. Nome, empresa e telefone moram num campo cifrado no navegador.
 - O servidor identifica o contato por um HMAC do telefone, nunca pelo número.
-- Edição manual de nome e empresa persiste, e alimenta os tokens `@nome`, `@primeiro_nome`, `@empresa` e `@telefone`.
-- Etiquetas coloridas, aplicadas por card, com gerenciador próprio.
+- A edição manual de nome e empresa persiste e alimenta os tokens `@nome`, `@primeiro_nome`, `@empresa` e `@telefone`.
+- As etiquetas são coloridas, aplicadas por card, e têm gerenciador próprio.
 - Um sinal de anúncio (clique no botão de WhatsApp do site do usuário) pode ser casado com o contato que escreve em seguida, por proximidade de horário.
 
 <p align="center"><img src="./assets/screens/03-etiquetas.png" alt="Gerenciador de etiquetas coloridas, com criação, renomeação e paleta de cores." width="92%"><br><sub>Gerenciador de etiquetas coloridas, com criação, renomeação e paleta de cores.</sub></p>
@@ -75,7 +75,7 @@ Cada card é um contato. Nome, empresa e telefone moram num campo cifrado no nav
 
 #### Listas de contatos
 
-Listas importadas de planilha ou montadas dos contatos do WhatsApp, usadas como fonte da fila.
+As listas são importadas de planilha ou montadas a partir dos contatos do WhatsApp, e servem de fonte da fila.
 - A importação lê o arquivo no navegador, normaliza telefones e mescla duplicados.
 - O servidor guarda a lista pelos mesmos pseudônimos.
 
@@ -95,7 +95,7 @@ A fila automática é uma por workspace, com as listas como fontes ligáveis e o
 
 #### Automações e respostas automáticas
 
-Gatilho, atraso e ação. Gatilhos: entrou na coluna, parado há N minutos, sem resposta há N, respondeu, palavra-chave. Ações: mandar, mover, mandar e mover.
+Cada regra tem gatilho, atraso e ação. Os gatilhos são entrou na coluna, parado há N minutos, sem resposta há N, respondeu e palavra-chave. As ações são mandar, mover e mandar e mover.
 - Os gatilhos de tempo são avaliados pelo cron do servidor, que tem os carimbos.
 - A palavra-chave é comparada no navegador; sobe só o sinal "a regra bateu".
 - Mover card funciona com a aba fechada; enviar exige executor online.
@@ -107,24 +107,24 @@ Gatilho, atraso e ação. Gatilhos: entrou na coluna, parado há N minutos, sem 
 
 #### Áudio
 
-Mensagem de voz gravada na hora ou enviada de arquivo, na fila e nas automações.
+A mensagem de voz pode ser gravada na hora ou enviada de arquivo, e funciona na fila e nas automações.
 - O gravador usa MediaRecorder em WebM/Opus e converte para Ogg/Opus no navegador, sem recodificar, porque o WhatsApp não aceita WebM.
-- Sai como mensagem de voz, sem legenda.
+- Ela sai como mensagem de voz, sem legenda.
 - O arquivo é mídia de configuração do usuário e fica numa tabela própria, com tipo validado por lista fechada.
 
 <p align="center"><img src="./assets/screens/08-audio-gravando.png" alt="Gravador de mensagem de voz dentro do editor de automação, gravando com cronômetro e botão de parar." width="92%"><br><sub>Gravador de mensagem de voz dentro do editor de automação, gravando com cronômetro e botão de parar.</sub></p>
 
 #### Respostas rápidas
 
-Atalhos de texto para uso manual, gratuitos nos dois planos.
+São atalhos de texto para uso manual, gratuitos nos dois planos.
 
 <p align="center"><img src="./assets/screens/09-respostas-rapidas.png" alt="Atalhos de texto com tokens como @primeiro_nome, formulário de criação e prévia da mensagem." width="92%"><br><sub>Atalhos de texto com tokens como @primeiro_nome, formulário de criação e prévia da mensagem.</sub></p>
 
 #### Planos e cobrança
 
-Plano gratuito e Pro. O grátis tem três colunas e automações que só movem card. O Pro libera fila, agendamento por automação, respostas automáticas e colunas sem limite prático.
-- Cobrança pelo Stripe, em aba comum; nenhum dado de cartão passa pela extensão.
-- Cartão: assinatura mensal ou anual com 7 dias de teste, uma vez por conta e por cartão (guarda-se só o HMAC da impressão do cartão). O anual mostra o valor por mês e a economia.
+Existem o plano gratuito e o Pro. O gratuito tem três colunas e automações que só movem card. O Pro libera fila, agendamento por automação, respostas automáticas e colunas sem limite prático.
+- A cobrança é feita pelo Stripe, em aba comum, e nenhum dado de cartão passa pela extensão.
+- No cartão, a assinatura é mensal ou anual com 7 dias de teste, uma vez por conta e por cartão (guarda-se só o HMAC da impressão do cartão). O anual mostra o valor por mês e a economia.
 - O preço mora em tabela e muda sem deploy.
 - O webhook é assinado, idempotente por `event.id` e serializado por conta com lock consultivo.
 - A trava de plano mora no servidor; o cadeado na tela só informa. Queda de plano não apaga nada.
@@ -164,7 +164,7 @@ flowchart TB
   SW <--> API
 ```
 
-Modelo de dados, resumo: conta e acesso (usuários, identidades, sessões, dispositivos); funil (workspaces, colunas, cards, etiquetas, contatos, listas); comportamento (automações, respostas, filas, campanhas, mensagens agendadas, mídia); execução (outbox, alvos de fila); cobrança (assinaturas, preços, pagamentos, eventos). São cerca de trinta tabelas.
+O modelo de dados se resume assim: conta e acesso (usuários, identidades, sessões, dispositivos); funil (workspaces, colunas, cards, etiquetas, contatos, listas); comportamento (automações, respostas, filas, campanhas, mensagens agendadas, mídia); execução (outbox, alvos de fila); cobrança (assinaturas, preços, pagamentos, eventos). São cerca de trinta tabelas.
 
 ### Decisões de engenharia
 
@@ -178,14 +178,14 @@ Modelo de dados, resumo: conta e acesso (usuários, identidades, sessões, dispo
 ### Privacidade e conformidade
 
 - **Aceite com versão:** a conta grava data e versão dos textos; mudou o texto, a extensão pede novo aceite. O aviso de risco de envio é cobrado só de quem liga uma automação que envia.
-- **Retenção:** apagamento diário. Modelo de texto em até 24 horas após o envio; ordens resolvidas e logs em 90 dias; sessões e tokens em 7 dias; token de cancelamento de exclusão em 30; clique de anúncio sem vínculo em 24 horas e com vínculo em 180 dias.
+- **Retenção:** o apagamento é diário. O modelo de texto sai em até 24 horas após o envio; ordens resolvidas e logs em 90 dias; sessões e tokens em 7 dias; token de cancelamento de exclusão em 30; clique de anúncio sem vínculo em 24 horas e com vínculo em 180 dias.
 - **Exportação:** "Baixar meus dados" gera o arquivo na hora. Um teste falha se uma tabela nova ficar fora do export ou sem justificativa.
 - **Exclusão:** "Apagar minha conta" desconecta dispositivos, para os envios, desliga a renovação e elimina tudo em 30 dias, com link de cancelamento por e-mail.
 - **Limite dito em voz alta:** o servidor guarda a raiz cifrada pela chave mestra. Quem tiver banco e ambiente ao mesmo tempo decifra os perfis.
 
 ### Qualidade
 
-6.086 testes passando em 05/11/2026: 2.014 no backend e 4.072 na extensão. O backend roda integração com Postgres em memória e migrations reais. A suíte E2E dirige um Chromium real, com a extensão carregada e o WhatsApp Web logado, em passos que cobrem extensão, casca, ponte, sessão, Kanban, fila e agendamento, com disparo só para números autorizados. Lint estrito com zero aviso, `tsc`, Prettier e `npm audit` de produção rodam no hook de commit e no CI. Houve rodadas de auditoria, QA e pentest; os achados viraram correções com teste.
+Passam 6.086 testes em 05/11/2026: 2.014 no backend e 4.072 na extensão. O backend roda integração com Postgres em memória e migrations reais. A suíte E2E dirige um Chromium real, com a extensão carregada e o WhatsApp Web logado, em passos que cobrem extensão, casca, ponte, sessão, Kanban, fila e agendamento, com disparo só para números autorizados. Lint estrito com zero aviso, `tsc`, Prettier e `npm audit` de produção rodam no hook de commit e no CI. Houve rodadas de auditoria, QA e pentest; os achados viraram correções com teste.
 
 ### Limites conhecidos
 
@@ -194,6 +194,6 @@ Modelo de dados, resumo: conta e acesso (usuários, identidades, sessões, dispo
 - Se o wa-js quebrar numa atualização do WhatsApp Web, a extensão precisa de ajuste.
 - A UI de Campanhas está congelada; o backend segue de pé.
 - Alguns tempos do motor são marcados como provisórios até a medição de campo.
-- Sem backup automático do banco por enquanto.
+- Por enquanto não há backup automático do banco.
 
 <sub>Contato: <a href="https://joaocouto.alcetus.com">joaocouto.alcetus.com</a> · <a href="mailto:joaopecouto77@gmail.com">joaopecouto77@gmail.com</a></sub>

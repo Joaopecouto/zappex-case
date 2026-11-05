@@ -54,7 +54,7 @@ flowchart LR
 
 #### Board (Kanban)
 
-Columns and cards over the conversation, with drag and drop, filters, adjustable density, archiving with undo and removal from the pipeline.
+The board shows columns and cards over the conversation, with drag and drop, filters, adjustable density, archiving with undo and removal from the pipeline.
 - The UI uses dnd-kit; a drop persists immediately and the server returns the state.
 - Changes arrive by push (a pipeline event on the executor stream), with polling as a safety net. During a drag the refetch is frozen so it cannot overwrite the gesture.
 - New accounts get a set of default columns; one is the entry column where cards for new contacts land.
@@ -66,7 +66,7 @@ Columns and cards over the conversation, with drag and drop, filters, adjustable
 Each card is a contact. Name, company and phone live in a field encrypted in the browser.
 - The server identifies a contact by an HMAC of the phone, never by the number.
 - Manual edits to name and company persist and feed the tokens `@nome`, `@primeiro_nome`, `@empresa` and `@telefone`.
-- Colored labels, applied per card, with their own manager.
+- Labels are colored, applied per card, and have their own manager.
 - An ad click (on the WhatsApp button of the user's own site) can be matched to the contact who writes right after, by time proximity.
 
 <p align="center"><img src="./assets/screens/03-etiquetas.png" alt="Colored label manager with create, rename and a color palette." width="92%"><br><sub>Colored label manager with create, rename and a color palette.</sub></p>
@@ -75,7 +75,7 @@ Each card is a contact. Name, company and phone live in a field encrypted in the
 
 #### Contact lists
 
-Lists imported from a spreadsheet or built from WhatsApp contacts, used as sources for the queue.
+Lists are imported from a spreadsheet or built from WhatsApp contacts, and serve as sources for the queue.
 - Import reads the file in the browser, normalizes phones and merges duplicates.
 - The server stores the list under the same pseudonyms.
 
@@ -95,7 +95,7 @@ The automatic queue is one per workspace, with lists as switchable, orderable so
 
 #### Automations and auto-replies
 
-Trigger, delay, action. Triggers: entered column, stalled for N minutes, no reply for N, replied, keyword. Actions: send, move, send and move.
+Each rule has a trigger, a delay and an action. The triggers are entered column, stalled for N minutes, no reply for N, replied and keyword. The actions are send, move, and send and move.
 - Time-based triggers are evaluated by the server cron, which holds the timestamps.
 - Keywords are compared in the browser; only a "rule matched" signal goes up.
 - Moving a card works with the tab closed; sending needs an online executor.
@@ -107,7 +107,7 @@ Trigger, delay, action. Triggers: entered column, stalled for N minutes, no repl
 
 #### Audio
 
-Voice messages recorded on the spot or uploaded from a file, in the queue and in automations.
+Voice messages can be recorded on the spot or uploaded from a file, and they work in the queue and in automations.
 - The recorder uses MediaRecorder in WebM/Opus and rewraps it as Ogg/Opus in the browser, without re-encoding, because WhatsApp does not accept WebM.
 - It goes out as a voice message, without a caption.
 - The file is user-supplied configuration media, stored in its own table with the type checked against a closed list.
@@ -116,15 +116,15 @@ Voice messages recorded on the spot or uploaded from a file, in the queue and in
 
 #### Quick replies
 
-Text shortcuts for manual use, free on both plans.
+These are text shortcuts for manual use, free on both plans.
 
 <p align="center"><img src="./assets/screens/09-respostas-rapidas.png" alt="Text shortcuts with tokens such as @primeiro_nome, a creation form and a message preview." width="92%"><br><sub>Text shortcuts with tokens such as @primeiro_nome, a creation form and a message preview.</sub></p>
 
 #### Plans and billing
 
-Free and Pro plans. Free has three columns and automations that only move cards. Pro unlocks the queue, sending automations, auto-replies and unlimited columns in practice.
-- Billing through Stripe in a regular tab; no card data touches the extension.
-- Card: monthly or yearly subscription with a 7-day trial, once per account and per card (only an HMAC of the card fingerprint is kept). The yearly option shows the per-month price and the savings.
+There are two plans, Free and Pro. Free has three columns and automations that only move cards. Pro unlocks the queue, sending automations, auto-replies and unlimited columns in practice.
+- Billing goes through Stripe in a regular tab, and no card data touches the extension.
+- On a card, the subscription is monthly or yearly with a 7-day trial, once per account and per card (only an HMAC of the card fingerprint is kept). The yearly option shows the per-month price and the savings.
 - Prices live in a table and change without a deploy.
 - The webhook is signed, idempotent by `event.id` and serialized per account with an advisory lock.
 - Plan gating lives on the server; the padlock in the UI only informs. Losing a plan deletes nothing.
@@ -164,7 +164,7 @@ flowchart TB
   SW <--> API
 ```
 
-Data model, in short: account and access (users, identities, sessions, devices); pipeline (workspaces, columns, cards, labels, contacts, lists); behavior (automations, replies, queues, campaigns, scheduled messages, media); execution (outbox, queue targets); billing (subscriptions, prices, payments, events). About thirty tables in total.
+In short, the data model covers account and access (users, identities, sessions, devices); pipeline (workspaces, columns, cards, labels, contacts, lists); behavior (automations, replies, queues, campaigns, scheduled messages, media); execution (outbox, queue targets); billing (subscriptions, prices, payments, events). About thirty tables in total.
 
 ### Engineering decisions
 
@@ -178,14 +178,14 @@ Data model, in short: account and access (users, identities, sessions, devices);
 ### Privacy and compliance
 
 - **Versioned acceptance:** the account records the date and version of the texts; when the text changes, the extension asks again. The send-risk notice is required only from users who turn on a sending automation.
-- **Retention:** daily deletion. Message templates within 24 hours of sending; resolved orders and logs at 90 days; sessions and tokens at 7 days; deletion-cancel tokens at 30; unmatched ad clicks at 24 hours and matched ones at 180 days.
+- **Retention:** deletion runs daily. Message templates go within 24 hours of sending; resolved orders and logs at 90 days; sessions and tokens at 7 days; deletion-cancel tokens at 30; unmatched ad clicks at 24 hours and matched ones at 180 days.
 - **Export:** "Download my data" builds the file on the spot. A test fails if a new table is missing from the export or lacks a justification.
 - **Deletion:** "Delete my account" disconnects devices, stops sending, turns off renewal and erases everything in 30 days, with a cancel link sent by e-mail.
 - **A limit stated plainly:** the server holds the root, encrypted by a master key. Anyone with both the database and the server environment can decrypt the profiles.
 
 ### Quality
 
-6,086 tests passing on 2026-11-05: 2,014 in the backend and 4,072 in the extension. The backend runs integration tests on in-memory Postgres with the real migrations. The E2E suite drives a real Chromium with the extension loaded and WhatsApp Web signed in, in steps covering the extension, shell, bridge, session, Kanban, queue and scheduling, with real sends only to authorized numbers. Strict lint with zero warnings, `tsc`, Prettier and a production `npm audit` run in the commit hook and in CI. Audit, QA and pentest rounds were run, and their findings became fixes with tests.
+6,086 tests pass as of 2026-11-05: 2,014 in the backend and 4,072 in the extension. The backend runs integration tests on in-memory Postgres with the real migrations. The E2E suite drives a real Chromium with the extension loaded and WhatsApp Web signed in, in steps covering the extension, shell, bridge, session, Kanban, queue and scheduling, with real sends only to authorized numbers. Strict lint with zero warnings, `tsc`, Prettier and a production `npm audit` run in the commit hook and in CI. Audit, QA and pentest rounds were run, and their findings became fixes with tests.
 
 ### Known limits
 
