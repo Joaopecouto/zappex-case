@@ -20,9 +20,9 @@
 
 ### Visão geral
 
-O Zappex é um CRM Kanban que roda dentro do WhatsApp Web, como extensão do Chrome. Quem instala cria a conta com o Google e passa a organizar, em colunas ao lado da conversa, os chats que já tem abertos. Não há QR para parear, não há conta de desenvolvedor da Meta e não há servidor intermediário falando pelo cliente: quem conversa com o WhatsApp é a aba que o usuário já deixa aberta.
+O Zappex é um CRM Kanban que roda dentro do WhatsApp Web, como uma extensão do Chrome. Quem instala cria a conta com o Google e passa a organizar, em colunas ao lado da conversa, os chats que já tem abertos. Não há QR para parear, não há conta de desenvolvedor da Meta e não há servidor intermediário falando pelo cliente: quem conversa com o WhatsApp é a aba que o usuário já deixa aberta.
 
-O público é o profissional ou a pequena empresa que atende e vende pelo WhatsApp e hoje controla o funil de cabeça, em planilha ou em post-it. O produto resolve três problemas: ver o funil sem sair da conversa, automatizar o acompanhamento (mover card, responder, mandar sequência, agendar) e não perder a configuração ao trocar de computador.
+O público é o profissional ou a pequena empresa que atende e vende pelo WhatsApp e hoje ainda controla o funil de cabeça, em planilha ou em post-it. O produto resolve três problemas: ver o funil sem sair da conversa, automatizar o acompanhamento (mover card, responder, mandar sequência, agendar) e não perder a configuração ao trocar de computador.
 
 A regra central de arquitetura é que o servidor não guarda conversa. Ele guarda a configuração e a posição de cada contato no funil, sob pseudônimo. Nome, empresa e telefone ficam cifrados, e o texto das mensagens nunca sobe.
 

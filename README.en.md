@@ -20,11 +20,11 @@
 
 ### Overview
 
-Zappex is a Kanban CRM that runs inside WhatsApp Web as a Chrome extension. Users sign in with Google and organize the chats they already have open into columns beside the conversation. There is no QR pairing, no Meta developer account and no intermediary server speaking on the customer's behalf: the tab the user already keeps open does the talking.
+Zappex is a Kanban CRM that runs inside WhatsApp Web as a Chrome extension. Users sign in with Google and organize the chats they already have open into columns beside the conversation. There's no QR pairing, no Meta developer account and no intermediary server speaking on the customer's behalf: the tab the user already keeps open does the talking.
 
-It is built for professionals and small businesses that sell and support through WhatsApp and track their pipeline in their head, in a spreadsheet or on sticky notes. It solves three problems: seeing the pipeline without leaving the chat, automating follow-up (moving cards, replying, sending sequences, scheduling), and keeping the setup when switching computers.
+It's built for professionals and small businesses that sell and support through WhatsApp and track their pipeline in their head, in a spreadsheet or on sticky notes. It solves three problems: seeing the pipeline without leaving the chat, automating follow-up (moving cards, replying, sending sequences, scheduling), and keeping the setup when they switch computers.
 
-The central architecture rule is that the server stores no conversation. It keeps configuration and each contact's pipeline position under a pseudonym. Name, company and phone are encrypted, and message text never leaves the browser.
+The central architecture rule is that the server doesn't store any conversation. It keeps configuration and each contact's pipeline position under a pseudonym. Name, company and phone are encrypted, and message text never leaves the browser.
 
 ### How it works
 
